@@ -1,5 +1,5 @@
 from django.db import models
-# from user.models import Sotuvchi
+
 from user.models import *
 
 
