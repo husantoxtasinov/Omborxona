@@ -26,8 +26,13 @@ class Mahsulotview(View):
 
     def get(self, request):
         if request.user.is_authenticated:
+            mahsulotlar=Mahsulot.objects.filter(sotuvchi__user=request.user)
+            qidiruv_sozi=request.GET.get('soz')
+            if qidiruv_sozi is not None:
+                mahsulotlar=mahsulotlar.filter(nom__contains=
+                qidiruv_sozi)|mahsulotlar.filter(brend__contains=qidiruv_sozi)
             data={
-                'mahsulotlar':Mahsulot.objects.filter(sotuvchi__user=request.user)
+                'mahsulotlar':mahsulotlar
             }
             return render(request,'products.html',data)
         return redirect('/')
@@ -47,8 +52,13 @@ class Mijozlarview(View):
         return redirect('/')
     def get(self,request):
         if request.user.is_authenticated:
+            mijozlar=Mijoz.objects.filter(sotuvchi__user=request.user)
+            qidiruv_sozi=request.GET.get('soz')
+            if qidiruv_sozi is not None:
+                mijozlar=mijozlar.filter(nom__contains=
+                qidiruv_sozi)|mijozlar.filter(ism__contains=qidiruv_sozi)
             data={
-                'mijozlar':Mijoz.objects.filter(sotuvchi__user=request.user)
+                'mijozlar':mijozlar
             }
             return render(request,'clients.html', data)
         return redirect('/')

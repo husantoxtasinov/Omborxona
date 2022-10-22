@@ -78,19 +78,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Menu</li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="/stats/stats/" class="nav-link active">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Statistics</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="/bolimlar/mijozlar/" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Clients</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/bolimlar/mahsulotlar/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Products</p>
             </a>
@@ -179,22 +179,45 @@
           </div>
     
           <!-- Modal body -->
-          <form action="#" id="new-product-form" method="post">{% csrf_token %}
+
+          <form action="/stats/stats/" id="new-product-form" method="post">{% csrf_token %}
             <div class="modal-body">
               <label for="product">Product:</label>
-             <input type="datetime-local" name="sana" placeholder="Sana" id="product" class="form-control" required>
+                <br>
+                <select name="mahsulot" id="product">
+                    {% for mahsulot in mahsulotlar %}
+                    <option value="{{mahsulot.id}}">{{mahsulot}}</option>
+                    {% endfor %}
+                </select>
+                <br>
                 <br>
               <label for="client">Client:</label>
-                <input type="datetime-local" name="sana" placeholder="Sana" id="client" class="form-control" required>
+                <br>
+                <select name="mijoz" id="client">
+                    {% for mijoz in mijozlar %}
+                    <option value="{{mijoz.id}}">{{mijoz}}</option>
+                    {% endfor %}
+                </select>
               <br>
+                <br>
               <label for="sana">Sana:</label>
-              <input type="datetime-local" name="sana" placeholder="Sana" id="sana" class="form-control" required>
+              <input type="date" name="sana" placeholder="Sana" id="sana" class="form-control" required>
               <br>
                 <label for="miqdor">Miqdor:</label>
               <input type="number" name="miqdor" placeholder="Miqdor" id="miqdor" class="form-control" required>
               <br>
               <label for="umumiy_summa">Umumiy summa:</label>
               <input type="number" name="summa" placeholder="Umumiy summa" id="umumiy_summa" class="form-control" required>
+              <br>
+               <br>
+              <label for="sotuvchi">Sotuvchi:</label>
+                <br>
+                <select name="sotuvchi" id="sotuvchi">
+                    {% for sotuvchi in sotuvchilar %}
+                <option value="{{sotuvchi.id}}">{{sotuvchi}}</option>
+                    {% endfor %}
+                </select>
+                <br>
               <br>
                 <label for="nasiya">Nasiya:</label>
               <input type="number" name="nasiya" placeholder="Nasiya" id="nasiya" class="form-control" required>

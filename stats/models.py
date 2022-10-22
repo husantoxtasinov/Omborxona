@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import *
+from user.models import Sotuvchi
 from asosiy.models import *
 
 class Statistika(models.Model):

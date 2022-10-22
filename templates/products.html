@@ -78,19 +78,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Menu</li>
           <li class="nav-item">
-            <a href="stats" class="nav-link">
+            <a href="/stats/stats/" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>Statistics</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/clients/" class="nav-link">
+            <a href="/bolimlar/mijozlar/" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">Clients</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="goods" class="nav-link active">
+            <a href="/bolimlar/mahsulotlar/" class="nav-link active">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Products</p>
             </a>
@@ -115,7 +115,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="stats">Home</a></li>
               <li class="breadcrumb-item active">Clients</li>
-                <li class="breadcrumb-item"><a href="logout">Logout</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'logout' %}">Logout</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -127,6 +127,10 @@
             <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Maxsulot qo'shish</button>
+                    <form action="/bolimlar/mahsulotlar/" method="get">
+                        <input name="soz" type="text">
+                         <button type="submit">Qidirish</button>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
